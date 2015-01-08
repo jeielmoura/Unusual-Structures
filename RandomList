@@ -1,0 +1,44 @@
+import java.util.Random;
+public class RandomList{
+
+    Random random = new Random();
+    int PrincipalVector[];
+    int PositionVector[];
+    int MAX;
+
+    public RandomList(int size){
+        this.PrincipalVector = new int [size];
+        this.PositionVector = new int [size];
+        this.MAX = size - 1;
+        for(int i = 0; i < size; i++){
+            this.PrincipalVector[i] = i; 
+            this.PositionVector[i] = i;
+        }
+    }
+
+    public int getNextNumber(){
+        int position = random.nextInt(MAX+1);
+        int aux = PrincipalVector[position];
+        this.removeNumber(position);
+        return aux;
+    }
+
+    private void setPositionOf(int number, int position){
+        this.PositionVector[number] = position;
+    }
+
+    public void removeNumber(int position){
+        if(MAX > 0) {
+            int aux = PrincipalVector[position];
+            //int auxliar = PrincipalVector[MAX];
+            PrincipalVector[position] = PrincipalVector[MAX];
+            PrincipalVector[MAX] = aux;
+
+            setPositionOf(PrincipalVector[position],position);  // equal to setPositionOf(auxiliar,position);
+            setPositionOf(aux,MAX*(-1));  // nagative because whas logically deleted.
+
+            MAX--;
+        }
+    }
+
+}
