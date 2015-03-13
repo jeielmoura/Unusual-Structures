@@ -1,0 +1,34 @@
+public class SymmetricMatrix{
+    int Array[], MAX;
+    public SymmetricMatrix(int size, int Matrix[][]){
+        int i =0,j=0,count,sizeplus=size+1;
+        
+        this.MAX = (size*(size -1))/2;
+        this.Array = new int [MAX];
+        
+        for(count = 0; count <= MAX; count++){
+            this.Array[count] = Matrix[i][j];
+            j++;
+            j = sizeplus%j;
+            if (j == 0){
+                i++;
+                j = i;}
+        }
+    }
+
+    public int getPosition(int i, int j){
+        if(i >= j){
+            int position = i*(i+1) + j;
+            int aux = ((1+i)*i)/2;
+            return this.Array[position - aux];}
+        return getPosition(j,i);    //else
+    }
+    
+    public void setPosition(int i, int j, int value){
+        if(i >= j){
+            int position = i*(i+1) + j;
+            int aux = ((1+i)*i)/2;  //sum of arithmetic progression
+            this.Array[position - aux] = value;}
+        else setPosition(j,i,value);
+    }
+}
