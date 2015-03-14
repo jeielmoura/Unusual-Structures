@@ -6,7 +6,7 @@ public class SymmetricMatrix{
         this.MAX = (size*(size +1))/2;
         this.Array = new int [MAX];
         
-        for(count = 0; count <= MAX; count++){
+        for(count = 0; count < MAX; count++){
             this.Array[count] = Matrix[i][j];
             j++;
             j = sizeplus%j;
