@@ -3,7 +3,7 @@ public class SymmetricMatrix{
     public SymmetricMatrix(int size, int Matrix[][]){
         int i =0,j=0,count,sizeplus=size+1;
         
-        this.MAX = (size*(size -1))/2;
+        this.MAX = (size*(size +1))/2;
         this.Array = new int [MAX];
         
         for(count = 0; count <= MAX; count++){
