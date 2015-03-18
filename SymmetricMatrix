@@ -22,17 +22,19 @@ public class SymmetricMatrix{
 
     public int getPosition(int i, int j){
         if(i >= j){
-            int position = i*(i+1) + j;
-            int aux = ((1+i)*i)/2;  //sum of arithmetic progression
-            return this.Array[position - aux];}
+            //int position = i*(i+1) + j;
+            //int aux = ((1+i)*i)/2;  //sum of arithmetic progression
+            return this.Array[(i+1)*(j-(i/2))+i];    //position - aux
+        }
         return getPosition(j,i);    //else
     }
     
     public void setPosition(int i, int j, int value){
         if(i >= j){
-            int position = i*(i+1) + j;
-            int aux = ((1+i)*i)/2;  //sum of arithmetic progression
-            this.Array[position - aux] = value;}
+            //int position = i*(i+1) + j;
+            //int aux = ((1+i)*i)/2;  //sum of arithmetic progression
+            this.Array[(i+1)*(j-(i/2))+i] = value;    //position - aux
+        }
         else setPosition(j,i,value);
     }
 }
