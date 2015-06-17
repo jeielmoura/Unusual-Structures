@@ -1,39 +1,42 @@
 public class SymmetricMatrix{
-    int Array[], MAX;
+    int Array[], MAX, size;
     public SymmetricMatrix(int size, int Matrix[][]){
-        int i =0,j=0,count,sizeless=size-1;
+        int i,j;
         
-        this.MAX = (size*(size +1))/2;
+        this.MAX = (size*size + size)/2;
         this.Array = new int [MAX];
+        this.size = size;
         
-        for(count = 0; count < MAX; count++){
+        i = j = 0;
+        
+        for(int count = 0; count < MAX; count++){ //[0,MAX-1]
             this.Array[count] = Matrix[i][j];
             j++;
-            if (j > sizeless){
+            if (j == size){
                 i++;
                 j = i;}
         }
     }
     
     public SymmetricMatrix(int size){
-        this.MAX = (size*(size +1))/2;
+        this.MAX = (size*size + size)/2;
         this.Array = new int [MAX];
     }
 
     public int getPosition(int i, int j){
         if(i >= j){
-            //int position = i*(i+1) + j;
-            //int aux = ((1+i)*i)/2;  //sum of arithmetic progression
-            return this.Array[(i+1)*(j-(i/2))+i];    //position - aux
+            //int position = i*size + j;
+            //int aux = ((1+i)*i)/2;    sum of arithmetic progression
+            return this.Array[i*(size -((i+1)/2))+ j];    //position - aux
         }
         return getPosition(j,i);    //else
     }
     
     public void setPosition(int i, int j, int value){
         if(i >= j){
-            //int position = i*(i+1) + j;
-            //int aux = ((1+i)*i)/2;  //sum of arithmetic progression
-            this.Array[(i+1)*(j-(i/2))+i] = value;    //position - aux
+            //int position = i*size + j;
+            //int aux = ((1+i)*i)/2;    sum of arithmetic progression
+            this.Array[i*(size -((i+1)/2))+ j] = value;    //position - aux
         }
         else setPosition(j,i,value);
     }
