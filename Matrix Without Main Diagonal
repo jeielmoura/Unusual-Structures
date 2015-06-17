@@ -1,0 +1,50 @@
+public class MatrixWMD{
+    int Array[], MAX, size;
+    public MatrixNPD(int size, int Matrix[][]){
+        int i,j,count = 0;
+        this.size = size;
+        this.MAX = size*size - size;
+        this.Array = new int [MAX];
+        for(i = 0; i < size; i++){ // [0,size-1]
+             for(j = 0; j < i; j++){ // [0,j-1]
+                 Array[count] = Matrix[i][j];
+                 count++;
+             }
+             for(j++; j < size; j++){ // [i+1,size-1]
+                 Array[count] = Matrix[i][j-1];
+                 count++;
+             }
+       }
+    }
+
+    public MatrixWMD(int size){
+        this.MAX = size*size - size;
+        this.Array = new int [MAX];
+    }
+    
+    public int getPosition(int i, int j){
+        if (j < i) return Array[i*size + j -i];
+        return Array[i*size + j -i -1];
+    }
+    
+    public int getPositionIj(int i, int j){
+        return Array[i*size + j -i];
+    }
+    
+    public int getPositioniJ(int i, int j){
+        return Array[i*size + j -i -1];
+    }
+    
+    public void setPosition(int i, int j, int value){
+        if (j < i) Array[i*size + j -i] = value;
+        else Array[i*size + j -i -1] = value;
+    }
+    
+    public void setPositionIj(int i, int j, int value){
+        Array[i*size + j -i] = value;
+    }
+    
+    public void setPositioniJ(int i, int j, int value){
+        Array[i*size + j -i -1] = value;
+    }
+}
