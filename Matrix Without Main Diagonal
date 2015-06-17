@@ -1,6 +1,6 @@
 public class MatrixWMD{
     int Array[], MAX, size;
-    public MatrixNPD(int size, int Matrix[][]){
+    public MatrixWMD(int size, int Matrix[][]){
         int i,j,count = 0;
         this.size = size;
         this.MAX = size*size - size;
