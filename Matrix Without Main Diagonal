@@ -1,50 +1,49 @@
 public class MatrixWMD{
-    int Array[], MAX, size;
+    int Matrix[][], size;
     public MatrixWMD(int size, int Matrix[][]){
         int i,j,count = 0;
         this.size = size;
-        this.MAX = size*size - size;
-        this.Array = new int [MAX];
+        this.Matrix = new int [size][size-1];
         for(i = 0; i < size; i++){ // [0,size-1]
              for(j = 0; j < i; j++){ // [0,j-1]
-                 Array[count] = Matrix[i][j];
+                 this.Matrix[i][j] = Matrix[i][j];
                  count++;
              }
              for(j++; j < size; j++){ // [i+1,size-1]
-                 Array[count] = Matrix[i][j-1];
+                 this.Matrix[i][j-1] = Matrix[i][j];
                  count++;
              }
        }
     }
 
     public MatrixWMD(int size){
-        this.MAX = size*size - size;
-        this.Array = new int [MAX];
+        this.size = size;
+        this.Matrix = new int [size][size-1];
     }
-    
+
     public int getPosition(int i, int j){
-        if (j < i) return Array[i*size + j -i];
-        return Array[i*size + j -i -1];
+        if (j < i) return Matrix[i][j];
+        return Matrix[i][j-1];
     }
-    
+
     public int getPositionIj(int i, int j){
-        return Array[i*size + j -i];
+        return Matrix[i][j];
     }
-    
+
     public int getPositioniJ(int i, int j){
-        return Array[i*size + j -i -1];
+        return Matrix[i][j-1];
     }
-    
+
     public void setPosition(int i, int j, int value){
-        if (j < i) Array[i*size + j -i] = value;
-        else Array[i*size + j -i -1] = value;
+        if (j < i) Matrix[i][j] = value;
+        else Matrix[i][j-1] = value;
     }
-    
+
     public void setPositionIj(int i, int j, int value){
-        Array[i*size + j -i] = value;
+        Matrix[i][j] = value;
     }
-    
+
     public void setPositioniJ(int i, int j, int value){
-        Array[i*size + j -i -1] = value;
+        Matrix[i][j-1] = value;
     }
 }
