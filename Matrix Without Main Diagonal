@@ -5,7 +5,7 @@ public class MatrixWMD{
         this.size = size;
         this.Matrix = new int [size][size-1];
         for(i = 0; i < size; i++){ // [0,size-1]
-             for(j = 0; j < i; j++){ // [0,j-1]
+             for(j = 0; j < i; j++){ // [0,i-1]
                  this.Matrix[i][j] = Matrix[i][j];
                  count++;
              }
