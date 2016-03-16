@@ -11,10 +11,8 @@ public class SymmetricMatrix{
         
         for(int count = 0; count < MAX; count++){ //[0,MAX-1]
             this.Array[count] = Matrix[i][j];
-            j++;
-            if (j == size){
-                i++;
-                j = i;}
+            if (++j == size)
+                j = ++i;
         }
     }
     
