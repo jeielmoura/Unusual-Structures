@@ -20,7 +20,8 @@ public class MatrixWMD{
     }
 
     public int getPosition(int i, int j){
-        if (j < i) return Matrix[i][j];
+        if (j < i)
+            return Matrix[i][j];
         return Matrix[i][j-1];
     }
 
@@ -33,8 +34,12 @@ public class MatrixWMD{
     }
 
     public void setPosition(int i, int j, int value){
-        if (j < i) Matrix[i][j] = value;
-        else Matrix[i][j-1] = value;
+        if(i != j){
+            if (j < i)
+                Matrix[i][j] = value;
+            else
+                Matrix[i][j-1] = value;
+        }
     }
 
     public void setPositionIj(int i, int j, int value){
