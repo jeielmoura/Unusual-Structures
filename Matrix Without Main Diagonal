@@ -1,23 +1,21 @@
 public class MatrixWMD{
-    int Matrix[][], size;
+    int Matrix[][];
     public MatrixWMD(int size, int Matrix[][]){
-        int i,j,count = 0;
-        this.size = size;
+    
+        int i,j;
         this.Matrix = new int [size][size-1];
+        
         for(i = 0; i < size; i++){ // [0,size-1]
-             for(j = 0; j < i; j++){ // [0,i-1]
+        
+             for(j = 0; j < i; j++) // [0,i-1]
                  this.Matrix[i][j] = Matrix[i][j];
-                 count++;
-             }
-             for(j++; j < size; j++){ // [i+1,size-1]
+                 
+             for(j++; j < size; j++) // [i+1,size-1]
                  this.Matrix[i][j-1] = Matrix[i][j];
-                 count++;
-             }
        }
     }
 
     public MatrixWMD(int size){
-        this.size = size;
         this.Matrix = new int [size][size-1];
     }
 
